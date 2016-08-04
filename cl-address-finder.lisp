@@ -27,7 +27,6 @@
           uri
           :want-stream t
           :method :GET
-          :additional-headers `(("referer" . "https://addressfinder.io"))
           :parameters params )))
     (setf (flexi-streams:flexi-stream-external-format stream) :utf-8)
     (yason:parse stream :object-as :plist
