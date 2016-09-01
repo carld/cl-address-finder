@@ -20,6 +20,11 @@
   "Returns an association list of mandatory parameters for every request"
     `(("key" . ,*key*) ("secret" . ,*secret*)))
 
+(defun config-from-env (&optional (key "ADDRESS_FINDER_KEY") (secret "ADDRESS_FINDER_SECRET"))
+  (setf *key* (sb-ext:posix-getenv key))
+  (setf *secret* (sb-ext:posix-getenv secret))
+  t)
+
 (defun api-request (uri params)
   "make an HTTP request to `uri' with the supplied `params'"
   (let ((stream
@@ -71,3 +76,4 @@
   (defapi "nz/location/nearby"
       `(("x" . ,(stringify-param longitude))
         ("y" . ,(stringify-param latitude)))))
+

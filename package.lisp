@@ -4,6 +4,7 @@
   (:use :common-lisp :drakma :yason)
   (:export
      *key* *secret*
+     :config-from-env
      :address
      :address/info
      :address/nearby
